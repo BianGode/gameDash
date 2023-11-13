@@ -1,0 +1,63 @@
+.pixelWrapper {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.pixelBoard {
+  display: grid;
+  grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
+  /* calculate center of remaining space */
+}
+
+/* controls style*/
+.controls {
+  background-color: lightblue;
+  padding: 30px;
+  /* flex-grow: 1; */
+}
+.popColorsWrap {
+  display: flex;
+  flex-direction: column;
+}
+.popularColors {
+  display: flex;
+}
+.popColor {
+  height: 2rem;
+  width: 2rem;
+}
+.popColor:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s;
+}
+/* colors fill */
+.red {
+  background-color: #ff0000;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.yellow {
+  background-color: yellow;
+}
+.black {
+  background-color: black;
+}
+
+/* End controls style */
+
+/* square border */
+.border > div {
+  border: 1px solid black;
+}
+.noBorder > div {
+  border:none;
+}
+.square {
+  height: 20px;
+}

@@ -1,0 +1,16 @@
+.active {
+  color: green;
+}
+.navbar {
+  width: 100wv;
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  height: 50px;
+  background-color: beige;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 3px dashed salmon;
+}
