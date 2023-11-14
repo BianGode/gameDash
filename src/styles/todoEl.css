@@ -1,6 +1,16 @@
 .listElDiv {
   width: 300px;
   background: linear-gradient(to right, rgb(228, 234, 206), grey);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.orangeEl {
+  background: linear-gradient(to right, rgb(139, 57, 16), rgb(210, 119, 50));
+}
+.greenEl {
+  background: linear-gradient(to right, rgb(25, 97, 11), rgb(56, 154, 74));
 }
 li {
   list-style: none;
@@ -9,4 +19,10 @@ li {
 li:hover{
   color: rgb(81, 43, 43);
   transition: ease-in-out transform 0.5s;
+}
+.completeBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 90px;
+  border: 1px solid black;
 }

@@ -4,12 +4,18 @@ import TodoEl from "./TodoEl";
 
 export default function TodoList() {
   const [todos, setTodo] = useState([]);
-  const [inp, setInp] = useState("");
+  const [inp, setInp] = useState({
+    inputValue: '',
+    isCompleted: ''
+  });
 
   function handleClick() {
     if (inp !== "") {
       setTodo([...todos, inp]);
-      setInp("");
+      setInp({
+        inputValue: '',
+        isCompleted: ''
+      });
     }
   }
 
@@ -17,7 +23,10 @@ export default function TodoList() {
   function handleKeyDown(event) {
     if (event.key == "Enter" && event.target.value !== "") {
       setTodo([...todos, inp]);
-      setInp("");
+      setInp({
+        inputValue: '',
+        isCompleted: ''
+      });
     }
   }
 
@@ -26,7 +35,6 @@ export default function TodoList() {
     const tempTodoList = todos;
     tempTodoList.splice(id, 1);
     setTodo([...tempTodoList]);
-    console.log(todos);
   }
 
   return (
@@ -36,18 +44,26 @@ export default function TodoList() {
           id="addTodo"
           type="text"
           name="todos"
-          value={inp}
-          onChange={(e) => setInp(e.target.value)}
+          value={inp.inputValue}
+          onChange={(e) => setInp({
+            inputValue: e.target.value,
+            isCompleted: ''
+          })}
           onKeyDown={(e) => handleKeyDown(e)}
         />
         <button onClick={() => handleClick()}>add</button>
+      </div>
+      <div className="sortWrap">
+        <p>Completed</p>
+        <p>on Going</p>
+        <p>All</p>
       </div>
       <div className="todoListWrap">
         <ul>
           {todos.length > 0 ? (
             todos.map((todo, idx) => (
               <>
-              <TodoEl index={idx} del={()=> deleteTodo(idx)} test={todo} key={idx} /> 
+              <TodoEl index={idx} del={()=> deleteTodo(idx)} data={JSON.stringify(todo)} key={idx} /> 
                {/* <li key={idx} onClick={() => deleteTodo(idx)}>
                  {todo}
                </li> */}
