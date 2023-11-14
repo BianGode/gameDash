@@ -1,0 +1,12 @@
+.listElDiv {
+  width: 300px;
+  background: linear-gradient(to right, rgb(228, 234, 206), grey);
+}
+li {
+  list-style: none;
+  padding: 10px 20px;
+}
+li:hover{
+  color: rgb(81, 43, 43);
+  transition: ease-in-out transform 0.5s;
+}

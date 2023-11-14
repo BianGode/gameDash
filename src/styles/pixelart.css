@@ -22,7 +22,9 @@
   flex-direction: column;
 }
 .popularColors {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: fit-content;
 }
 .popColor {
   height: 2rem;
@@ -34,30 +36,58 @@
 }
 /* colors fill */
 .red {
-  background-color: #ff0000;
+  background-color: #d50000;
 }
 .green {
-  background-color: green;
+  background-color: #2e7d32;
 }
 .blue {
-  background-color: blue;
+  background-color: #0d47a1;
 }
 .yellow {
-  background-color: yellow;
+  background-color: #ffeb3b;
 }
 .black {
-  background-color: black;
+  background-color: #212121;
+}
+.purple {
+  background-color: #6200ea;
+}
+.white {
+  background-color: #fafafa;
+}
+.brown {
+  background-color: #3e2723;
 }
 
 /* End controls style */
 
 /* square border */
 .border > div {
-  border: 1px solid black;
+  border: 0.5px solid black;
+  transition: 0.1s ease;
 }
 .noBorder > div {
   border:none;
+  transition: border 0.1s ease;
 }
 .square {
   height: 20px;
+}
+.artName {
+  background-color: none;
+  border: 2px dashed rgb(200, 200, 67);
+  width: 100%;
+  text-align: center;
+  height: 2.5rem;
+}
+.artName:focus {
+  outline: none;
+}
+.colorPick {
+  border: none;
+} 
+
+.rmvLines:hover {
+  animation: smallBlinker 0.4s linear infinite;
 }

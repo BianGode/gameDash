@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../styles/todo.css";
+import TodoEl from "./TodoEl";
 
 export default function TodoList() {
   const [todos, setTodo] = useState([]);
@@ -26,28 +28,36 @@ export default function TodoList() {
     setTodo([...tempTodoList]);
     console.log(todos);
   }
+
   return (
-    <div>
-      <input
-        id="addTodo"
-        type="text"
-        name="todos"
-        value={inp}
-        onChange={(e) => setInp(e.target.value)}
-        onKeyDown={(e) => handleKeyDown(e)}
-      />
-      <button onClick={() => handleClick()}>add</button>
-      <ul>
-        {todos.length > 0 ? (
-          todos.map((todo, idx) => (
-            <li key={idx} onClick={() => deleteTodo(idx)}>
-              {todo}
-            </li>
-          ))
-        ) : (
-          <p></p>
-        )}
-      </ul>
+    <div className="todoPageWrap">
+      <div className="addTodoWrap">
+        <input
+          id="addTodo"
+          type="text"
+          name="todos"
+          value={inp}
+          onChange={(e) => setInp(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
+        />
+        <button onClick={() => handleClick()}>add</button>
+      </div>
+      <div className="todoListWrap">
+        <ul>
+          {todos.length > 0 ? (
+            todos.map((todo, idx) => (
+              <>
+              <TodoEl index={idx} del={()=> deleteTodo(idx)} test={todo} key={idx} /> 
+               {/* <li key={idx} onClick={() => deleteTodo(idx)}>
+                 {todo}
+               </li> */}
+              </>
+            ))
+          ) : (
+            <p></p>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

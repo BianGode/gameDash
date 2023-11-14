@@ -1,3 +1,33 @@
+/* Animation for blinking yellow nav item */
+@keyframes blinker {
+  0% {
+    color: black;
+  }
+  15% {
+    color: yellow;
+    transform: scale(1.1);
+  }
+  48% {
+    color: white;
+  }
+  52% {
+    color: yellow;
+    transform: scale(0.9);
+  }
+  85% {
+    color: black;
+  }
+}
+@keyframes smallBlinker {
+  0% {
+    color: black;
+  }
+  50% {
+    color: yellow;
+    transform: scale(1.07);
+  }
+}
+
 .active {
   color: green;
 }
@@ -7,10 +37,26 @@
   top: 0;
   left: 0; */
   height: 50px;
-  background-color: beige;
+  background-color: rgb(75, 75, 70);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   border-bottom: 3px dashed salmon;
 }
+a {
+  font-size: 1rem;
+  /* letter-spacing: 3px; */
+  font-family: "PressStart2P";
+  font-weight: 100;
+  color: #421d4f;
+  text-decoration: none;
+  animation-name: blinker;
+  animation-duration: infinite;
+}
+a:hover {
+  animation: blinker 1s linear infinite;
+}
+/* a:visited { */
+/* color: #0d47a1; */
+/* } */

@@ -26,7 +26,8 @@ const router = createBrowserRouter([
       {
         path: 'pixelart',
         element: <PixelArtMaker/>
-      }
+      }, //more paths.
+      // 4 in a row game
     ],
   },
   {

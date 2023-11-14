@@ -1,0 +1,18 @@
+.todoPageWrap {
+  /* height: calc(100vh - 50px - 10%); */
+  margin-top: 10%;
+  width: 100vw;
+}
+.addTodoWrap {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  /* flex-direction: r; */
+}
+.todoListWrap {
+  width: fit-content;
+  margin: 0 auto;
+}
+.todoListWrap ul{
+  padding: 0px;
+}

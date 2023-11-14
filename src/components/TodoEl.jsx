@@ -1,7 +1,11 @@
-export default function TodoEl() {
+import '../styles/todoEl.css'
+
+export default function TodoEl(props) {
   return (
-    <>
-      <h1>Todo Element</h1>
-    </>
-  )
+    <div className="listElDiv">
+      <li onClick={() => props.del(props.index)}>
+        { props.test }
+      </li>
+    </div>
+  );
 }
