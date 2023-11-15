@@ -7,10 +7,10 @@
   align-items: center;
 }
 .orangeEl {
-  background: linear-gradient(to right, rgb(139, 57, 16), rgb(210, 119, 50));
+  background: linear-gradient(to right,rgb(210, 119, 50),rgb(139, 57, 16));
 }
-.greenEl {
-  background: linear-gradient(to right, rgb(25, 97, 11), rgb(56, 154, 74));
+.completedEl {
+  background: linear-gradient(to right, rgb(56, 154, 74), rgb(25, 97, 11));
 }
 li {
   list-style: none;
@@ -21,8 +21,13 @@ li:hover{
   transition: ease-in-out transform 0.5s;
 }
 .completeBtn {
-  width: 30px;
-  height: 30px;
-  border-radius: 90px;
+  width: 20px;
+  height: 20px;
   border: 1px solid black;
+}
+.deleteBtn {
+  color: red;
+}
+.on {
+  background: linear-gradient(to right, red, blue);
 }

@@ -1,3 +1,15 @@
+.centerWrap {
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.gameTTTWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .wrapperTTT {
   /* margin: 0 auto; */
   /* width: 700px; */
@@ -10,14 +22,39 @@
   font-size: 100px;
   text-align: center;
 }
-.centerWrap {
-  height: calc(100vh - 50px);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-}
-h3 {
+.winningStatus {
   padding: 0;
   margin: 0;
+}
+
+/* make a traditional tictactoe layout */
+.zero, .one, .two {
+  border-top: none !important;
+}
+.two, .five, .eight {
+  border-right: none !important;
+}
+.zero, .three, .six {
+  border-left: none !important;
+}
+.six, .seven, .eight {
+  border-bottom: none !important;
+}
+
+.resetAlert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  border: 10px solid rgb(27, 20, 20);
+  background: white;
+  display: none;
+  /* justify-content: center; */
+  text-align: center;
+  align-items: center;
+}
+.resetAlertOn {
+  display: flex;
 }

@@ -1,20 +1,21 @@
 import { useState } from "react";
 import "../styles/todo.css";
-import TodoEl from "./TodoEl";
+import TodoRender from "./TodoRender";
 
 export default function TodoList() {
   const [todos, setTodo] = useState([]);
+  const [sort, setSort] = useState("all");
   const [inp, setInp] = useState({
-    inputValue: '',
-    isCompleted: ''
+    inputValue: "",
+    isCompleted: false,
   });
 
   function handleClick() {
     if (inp !== "") {
       setTodo([...todos, inp]);
       setInp({
-        inputValue: '',
-        isCompleted: ''
+        inputValue: "",
+        isCompleted: false,
       });
     }
   }
@@ -24,8 +25,8 @@ export default function TodoList() {
     if (event.key == "Enter" && event.target.value !== "") {
       setTodo([...todos, inp]);
       setInp({
-        inputValue: '',
-        isCompleted: ''
+        inputValue: "",
+        isCompleted: false,
       });
     }
   }
@@ -37,6 +38,21 @@ export default function TodoList() {
     setTodo([...tempTodoList]);
   }
 
+  function completeToggle(id) {
+    const tempTodos = todos;
+    tempTodos[id].isCompleted
+      ? (tempTodos[id].isCompleted = false)
+      : (tempTodos[id].isCompleted = true);
+    // todos[id].isCompleted
+    setTodo([...tempTodos]);
+  }
+
+  const sortCompleted = () => {
+    setSort("completed");
+  };
+
+
+
   return (
     <div className="todoPageWrap">
       <div className="addTodoWrap">
@@ -45,33 +61,27 @@ export default function TodoList() {
           type="text"
           name="todos"
           value={inp.inputValue}
-          onChange={(e) => setInp({
-            inputValue: e.target.value,
-            isCompleted: ''
-          })}
+          onChange={(e) =>
+            setInp({
+              inputValue: e.target.value,
+              isCompleted: false,
+            })
+          }
           onKeyDown={(e) => handleKeyDown(e)}
         />
         <button onClick={() => handleClick()}>add</button>
       </div>
       <div className="sortWrap">
-        <p>Completed</p>
-        <p>on Going</p>
-        <p>All</p>
+        <p onClick={() => setSort("completed")}>Completed</p>
+        <p onClick={() => setSort("ongoing")}>on Going</p>
+        <p onClick={() => setSort('all')}>All</p>
       </div>
       <div className="todoListWrap">
         <ul>
-          {todos.length > 0 ? (
-            todos.map((todo, idx) => (
-              <>
-              <TodoEl index={idx} del={()=> deleteTodo(idx)} data={JSON.stringify(todo)} key={idx} /> 
-               {/* <li key={idx} onClick={() => deleteTodo(idx)}>
-                 {todo}
-               </li> */}
-              </>
-            ))
-          ) : (
-            <p></p>
-          )}
+          { todos.length > 0 
+          ? <TodoRender todos={todos} sort={sort} completeToggle={completeToggle} deleteTodo={() => deleteTodo()}/>
+            : <p>no tasks yet</p>
+          }
         </ul>
       </div>
     </div>

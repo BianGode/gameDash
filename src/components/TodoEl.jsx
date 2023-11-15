@@ -1,15 +1,24 @@
-import '../styles/todoEl.css'
+import "../styles/todoEl.css";
 
 export default function TodoEl(props) {
-
   const parsedData = JSON.parse(props.data);
 
   return (
-    <div className="listElDiv greenEl">
-      <li onClick={() => props.del(props.index)}>
-        { parsedData.inputValue }
-      </li>
-      <div className='completeBtn'></div>
+    <div className={`listElDiv ${props.isCompleted ? "completedEl" : ""}`}>
+      <li>{parsedData.inputValue}</li>
+      <div>
+        <div
+          className={`completeBtn ${props.isCompleted ? "on" : ""}`}
+          onClick={() => props.toggleFun(props.index)}
+        ></div>
+        <div className="deleteBtn" onClick={() => props.del(props.index)}>X</div>
+      </div>
     </div>
   );
 }
+
+
+// TodoList > TodoRender > TodoEl
+                      //   TodoEl
+                      //   TodoEl
+                      //   TodoEl
