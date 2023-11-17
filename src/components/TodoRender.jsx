@@ -6,7 +6,7 @@ export default function TodoRender(props) {
       if (todo.isCompleted == true) {
         return (
           <TodoEl
-            isCompleted={true}
+            isCompleted={todo.isCompleted}
             index={idx}
             del={() => props.deleteTodo(idx)}
             data={JSON.stringify(todo)}
@@ -21,12 +21,12 @@ export default function TodoRender(props) {
       if (todo.isCompleted == false) {
         return (
           <TodoEl
-            isCompleted={false}
+            isCompleted={todo.isCompleted}
             index={idx}
             del={() => props.deleteTodo(idx)}
             data={JSON.stringify(todo)}
             key={idx}
-            toggleFun={props.completeToggle}
+            toggleFun={() => props.completeToggle(idx)}
           />
         );
       }

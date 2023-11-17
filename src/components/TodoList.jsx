@@ -1,18 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/todo.css";
 import TodoRender from "./TodoRender";
+import TodoRenderCopy from "./TodoRenderCopy";
 
 export default function TodoList() {
-  const [todos, setTodo] = useState([]);
+  // const [todos, setTodo] = useState(
+  //   JSON.parse(localStorage.getItem("todos"))
+  //   ? JSON.parse(localStorage.getItem("todos"))
+  //   : []
+  //  );
+   const [todos, setTodo] = useState(
+    localStorage.getItem("todos")
+    ? JSON.parse(localStorage.getItem("todos"))
+    : []
+   );
   const [sort, setSort] = useState("all");
   const [inp, setInp] = useState({
     inputValue: "",
-    isCompleted: false,
+    isCompleted: false
   });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+
+  // useEffect(() => {
+  //   const retrieveTodos = JSON.parse(localStorage.getItem("todos"))
+  //   if(retrieveTodos) {
+  //     setTodo(retrieveTodos)
+  //   }
+  // }, [])
 
   function handleClick() {
     if (inp !== "") {
       setTodo([...todos, inp]);
+      // localStorage.setItem("todos", todos.toString());
       setInp({
         inputValue: "",
         isCompleted: false,
@@ -20,14 +42,21 @@ export default function TodoList() {
     }
   }
 
+  if(localStorage.getItem("todos")) {
+    
+  }
+
   // handle enter input click
   function handleKeyDown(event) {
     if (event.key == "Enter" && event.target.value !== "") {
-      setTodo([...todos, inp]);
+      setTodo([...todos, inp])
+      // console.log(todos);
       setInp({
         inputValue: "",
         isCompleted: false,
       });
+      // localStorage.setItem("todos", );
+      // console.log(localStorage.getItem("todos"));
     }
   }
 
@@ -51,8 +80,6 @@ export default function TodoList() {
     setSort("completed");
   };
 
-
-
   return (
     <div className="todoPageWrap">
       <div className="addTodoWrap">
@@ -74,16 +101,24 @@ export default function TodoList() {
       <div className="sortWrap">
         <p onClick={() => setSort("completed")}>Completed</p>
         <p onClick={() => setSort("ongoing")}>on Going</p>
-        <p onClick={() => setSort('all')}>All</p>
+        <p onClick={() => setSort("all")}>All</p>
       </div>
       <div className="todoListWrap">
         <ul>
-          { todos.length > 0 
-          ? <TodoRender todos={todos} sort={sort} completeToggle={completeToggle} deleteTodo={() => deleteTodo()}/>
-            : <p>no tasks yet</p>
-          }
+          {todos.length > 0 ? (
+            <TodoRenderCopy
+              todos={todos}
+              sort={sort}
+              completeToggle={completeToggle}
+              deleteTodo={deleteTodo}
+            />
+          ) : (
+            <p>no tasks yet</p>
+          )}
         </ul>
       </div>
     </div>
   );
 }
+
+// was bezig met goed toevoegen van TodoEl en de clickboxxes werkend maken

@@ -1,7 +1,5 @@
-import "../styles/todoEl.css";
 
-export default function TodoEl(props) {
-  const parsedData = JSON.parse(props.data);
+export default function TodoElCopy(props) {
 
   return (
     <div className={`listElDiv ${props.isCompleted ? "completedEl" : ""}`}>
@@ -15,6 +13,7 @@ export default function TodoEl(props) {
       </div>
     </div>
   );
+
 }
 
 

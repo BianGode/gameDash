@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import components
-import BabyNina from "./pages/baby-nina";
 import ErrorPage from "./error-page";
 import TodoList from "./components/TodoList";
 import TTT from "./components/TicTacToe";
@@ -29,11 +28,7 @@ const router = createBrowserRouter([
       }, //more paths.
       // 4 in a row game
     ],
-  },
-  {
-    path: "ninatje",
-    element: <BabyNina />,
-  },
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
