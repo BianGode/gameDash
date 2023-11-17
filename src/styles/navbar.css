@@ -1,21 +1,16 @@
 /* Animation for blinking yellow nav item */
 @keyframes blinker {
-  0% {
-    color: black;
-  }
-  15% {
+  
+  25% {
     color: yellow;
     transform: scale(1.1);
   }
-  48% {
+  50% {
     color: white;
   }
-  52% {
+  75% {
     color: yellow;
     transform: scale(0.9);
-  }
-  85% {
-    color: black;
   }
 }
 @keyframes smallBlinker {
@@ -37,7 +32,9 @@
   top: 0;
   left: 0; */
   height: 50px;
-  background-color: rgb(75, 75, 70);
+  /* background-color: rgb(75, 75, 70);
+   */
+  background-image: url('../../public/test.avif');
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -49,10 +46,11 @@ a {
   /* letter-spacing: 3px; */
   font-family: "PressStart2P";
   font-weight: 100;
-  color: #421d4f;
+  color: white;
   text-decoration: none;
   animation-name: blinker;
   animation-duration: infinite;
+  text-shadow: 4px 0px black;
 }
 a:hover {
   animation: blinker 1s linear infinite;
