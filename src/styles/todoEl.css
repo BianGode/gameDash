@@ -1,5 +1,5 @@
 .listElDiv {
-  width: 300px;
+  max-width: 500px;
   background: linear-gradient(to right, rgb(228, 234, 206), grey);
   display: flex;
   flex-direction: row;

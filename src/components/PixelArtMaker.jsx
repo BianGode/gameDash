@@ -3,14 +3,16 @@ import "../styles/pixelart.css";
 
 export default function PixelArtMaker() {
   // What still todo here
-  
+
   // important
   // create a custom way to save all the tiles and the name
-  // represent a mini version of the saved art project   
+  // represent a mini version of the saved art project
 
   // add an effect when reset squares
   // go from up to down for each row of boxxes with animation
-  const [artName, setArtName] = useState('') 
+
+  const [artObj, setartObj] = useState("");
+  const [artName, setArtName] = useState("");
   const [currentColor, setCurrentColor] = useState("#000000");
 
   const testFun = (e) => {
@@ -36,14 +38,70 @@ export default function PixelArtMaker() {
     const colors = document.querySelectorAll(".square");
     for (let index = 0; index < colors.length; index++) {
       const color = colors[index];
-      color.style.backgroundColor = "white";
+      if (
+        color.style.backgroundColor !== "white" ||
+        color.style.backgroundColor !== "#ffffff"
+      ) {
+        color.style.backgroundColor = "white";
+        color.style.transition = "background-color 0.5 ease";
+      } else {
+        return;
+      }
     }
+  };
+
+  // STRUCTURE OF ALL LOCALSTORAGE
+
+  // TicTactoe
+  // score: ['x', 'o', 'o']
+
+  // TodoList
+  //   [
+  //     {
+  //       inputValue: string,
+  //       isCompleted: boolean
+  //   }
+  // ]
+
+  // PixelArtMaker
+  // {
+  //   projects: [
+  //     {
+  //       name: String,
+  //       squareArray: [array of colors]
+  //     }
+  //   ];
+  // }
+
+  // work on this function
+  const saveArt = () => {
+    const squares = document.querySelectorAll(".square");
+    const tempSquareArr = [];
+    squares.forEach((square) => {
+      if (square.style.backgroundColor == "") {
+        tempSquareArr.push("#ffffff");
+      } else {
+        tempSquareArr.push(square.style.backgroundColor);
+      }
+    });
+    console.log(tempSquareArr);
+    // setartObj({
+    //   name: artName,
+    //   squares: tempSquareArr
+    // })
+    console.log(artName);
+    localStorage.setItem(artName, JSON.stringify(tempSquareArr));
+    console.log(JSON.parse(localStorage.getItem(artName)));
   };
 
   return (
     <div className="pixelWrapper">
       <div className="pixelBoardWrapper">
-        <input className="artName" type="text" onChange={(e) => setArtName(e.target.value)}></input>
+        <input
+          className="artName"
+          type="text"
+          onChange={(e) => setArtName(e.target.value)}
+        ></input>
         <div className="pixelBoard border">
           <div className="square" onClick={(e) => tileFill(e)}></div>
           <div className="square" onClick={(e) => tileFill(e)}></div>
@@ -391,8 +449,11 @@ export default function PixelArtMaker() {
             ></div>
           </div>
         </div>
-        <p className="rmvLines" onClick={removeLines}>remove lines</p>
+        <p className="rmvLines" onClick={removeLines}>
+          remove lines
+        </p>
         <button onClick={() => reset()}>reset</button>
+        <button onClick={() => saveArt()}>Save</button>
       </div>
     </div>
   );
